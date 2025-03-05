@@ -1,0 +1,86 @@
+/* Reset some default styles */
+
+body,
+h1,
+h2,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+#getDataButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+
+/*
+    Make sure the button has a gray background (#ccc) and light gray text color (#666) 
+    when it's not clickable.
+    Change the cursor to "not-allowed" in the disabled state.
+*/
+
+#getDataButton:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+#responsive {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#responsive:hover {
+    background-color: #0056b3;
+}
+
+#userData {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#userData th,
+#userData td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#userData th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/*
+    Hide all columns except for id, username nd name on screens that are 768px wide or less
+*/
+
+@media screen and (max-width: 768px) {
+  .hide {
+    display: none;
+  }
+}

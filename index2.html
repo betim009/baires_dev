@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Set the title of html page as 'Web UI Testing - 2'-->
+    <title>Web UI Testing - 2</title>
+</head>
+<body>
+    <header>
+        <h1>Web UI Testing</h1>
+    </header>
+
+    <main>
+        <section id="section1">
+            <p>This is Section 1 content. Click the button to reveal more:</p>
+            <!-- Create a button with the id "revealButton" -->
+            <button id="revealButton">Reveal Button</button>
+            <!-- Create a div with the id "hiddenContent" and class "hidden" -->
+            <div id="hiddenContent" class="hidden">
+
+            </div>
+        </section>
+
+        <!-- Create Section 2 with id "section2", a heading "Section 2" 
+            and an unordered list containing three items with anchor tags 
+            items - Item 1, Item 2, Item 3-->
+        
+        <section id="section2">
+            <h2>Section 2</h2>
+            <ol>
+                <li>
+                    <a href="#">Item 1</a>
+                </li>
+                <li>
+                    <a href="#">Item 2</a>
+                </li>
+                <li>
+                    <a href="#">Item 3</a>
+                </li>
+            </ol>
+        </section>
+        
+        <section id="section3">
+            <h2>Section 3 - Form</h2>
+            <!--
+                Create an HTML form with the ID "sampleForm" containing Name and Age input fields, 
+                each with corresponding labels, and a submit button. The Name input should require 
+                more than 8 characters, and the Age input should be in the range of 4 to 99.
+                Validation can be performed in script.js.
+
+                Add IDs and class names to the input tags:
+                - Name input: ID "name", class "name" type "string"
+                - Age input: ID "age", class "age" type "number"
+            -->
+
+            <form id="sampleForm">
+                <label for="name">
+                    Name
+                </label>
+                <input type="text" id="name" class="name" minlength="9" required/>
+
+                <label>
+                    Age
+                </label>
+                <input type="number" id="age" class="age" min="4" max="99" required/>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <p id="formMessage" class="hidden">Form submitted successfully!</p>
+        </section>
+    </main>
+
+    <!-- Include your JavaScript file for handling interactions -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
