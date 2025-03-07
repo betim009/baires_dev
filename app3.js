@@ -7,47 +7,84 @@ const App = () => {
   const [editingId, setEditingId] = useState(null);
 
   const handleTitleChange = (e) => {
-    // set title
+    setTitle(e.target.value);
   };
 
   const handleAuthorChange = (e) => {
-    // set author
+    setAuthor(e.target.value);
   };
 
   const handleAddBook = () => {
-    // add a book must have a title and author, and id must be unique random number
+    if (title && author) {
+      const newBook = {
+        id: Math.random().toString(36).substr(2, 9), // Gera um ID único
+        title,
+        author,
+      };
+      setBooks([...books, newBook]);
+      setTitle(""); // Limpa o campo de título
+      setAuthor(""); // Limpa o campo de autor
+    }
   };
 
   const handleEditBook = (id) => {
-    // edit a book
+    const bookToEdit = books.find((book) => book.id === id);
+    if (bookToEdit) {
+      setEditingId(id);
+      setTitle(bookToEdit.title);
+      setAuthor(bookToEdit.author);
+    }
   };
 
   const handleUpdateBook = () => {
-    // update a book must have option to update title and author
+    if (editingId && title && author) {
+      const updatedBooks = books.map((book) =>
+        book.id === editingId ? { ...book, title, author } : book
+      );
+      setBooks(updatedBooks);
+      setEditingId(null); // Reseta o editingId
+      setTitle(""); // Limpa o campo de título
+      setAuthor(""); // Limpa o campo de autor
+    }
   };
 
   const handleDeleteBook = (id) => {
-    // delete a book
+    const updatedBooks = books.filter((book) => book.id !== id);
+    setBooks(updatedBooks);
   };
 
   return (
     <div>
       <h1>Book Stall</h1>
       <div>
-        <input type="text" placeholder="Title" value={title} />
-        <input type="text" placeholder="Author" value={author} />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <input
+          type="text"
+          placeholder="Author"
+          value={author}
+          onChange={handleAuthorChange}
+        />
         {editingId ? (
-          <button >Update Book</button>
+          <button onClick={handleUpdateBook}>Update Book</button>
         ) : (
-          <button >Add Book</button>
+          <button onClick={handleAddBook}>Add Book</button>
         )}
       </div>
       <ul>
-       {books.map(book => (
+        {books.map((book) => (
           <li key={book.id}>
             {book.title} - {book.author}
-            <button data-testid="edit-button">Edit</button>
-            <button data-testid="delete-button">Delete</button>
+            <button onClick={() => handleEditBook(book.id)} data-testid="edit-button">
+              Edit
+            </button>
+            <button onClick={() => handleDeleteBook(book.id)} data-testid="delete-button">
+              Delete
+            </button>
           </li>
         ))}
       </ul>
